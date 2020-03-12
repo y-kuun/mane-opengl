@@ -2,6 +2,7 @@
 
 #include <windows.h>
 #include <synchapi.h>
+#include <glad/glad.h>
 
 #if 1
 
@@ -47,6 +48,16 @@ int WINAPI WinMain(
 				{
 					switch(Message.message)
 					{
+						case WM_QUIT:
+						case WM_SYSKEYDOWN:
+						case WM_SYSKEYUP:
+						case WM_KEYDOWN:
+						case WM_KEYUP:
+						// {
+						// 	uint32_t VKCode = (uint32_t)Message.wParam;
+						// 	bool WasDown = ((Message.lParam & (1 << 30)) != 0);
+						// 	bool IsDown = ((Message.lParam & (1 << 31)) == 0);
+						// }
 						default:
 						{
 							TranslateMessage(&Message);
