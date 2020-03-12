@@ -59,7 +59,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\workspace\ykdu\mane-opengl\mane\lib\glfw\src\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\workspace\ykdu\mane-opengl\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">glfw.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">glfw3</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
@@ -120,7 +120,7 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/workspace/ykdu/mane-opengl/mane/lib/glfw/src/Debug/glfw3dll.lib</ImportLibrary>
+      <ImportLibrary>D:/workspace/ykdu/mane-opengl/mane/lib/glfw/src/bin/glfw3dll.lib</ImportLibrary>
       <ProgramDataBaseFile>D:/workspace/ykdu/mane-opengl/mane/lib/glfw/src/Debug/glfw3.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>

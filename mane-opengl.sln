@@ -24,8 +24,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.Debug|x64.ActiveCfg = Debug|x64
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.Debug|x64.Build.0 = Debug|x64
-		{ABE361DC-3879-4670-9765-231E089D3AB5}.Debug|x86.ActiveCfg = Debug|Win32
-		{ABE361DC-3879-4670-9765-231E089D3AB5}.Debug|x86.Build.0 = Debug|Win32
+		{ABE361DC-3879-4670-9765-231E089D3AB5}.Debug|x86.ActiveCfg = Debug|x64
+		{ABE361DC-3879-4670-9765-231E089D3AB5}.Debug|x86.Build.0 = Debug|x64
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.MinSizeRel|x64.ActiveCfg = Release|x64
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.MinSizeRel|x64.Build.0 = Release|x64
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.MinSizeRel|x86.ActiveCfg = Release|Win32
@@ -35,20 +35,20 @@ Global
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.Release|x86.ActiveCfg = Release|Win32
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.Release|x86.Build.0 = Release|Win32
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.RelWithDebInfo|x64.ActiveCfg = Release|x64
-		{ABE361DC-3879-4670-9765-231E089D3AB5}.RelWithDebInfo|x64.Build.0 = Release|x64
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.RelWithDebInfo|x86.ActiveCfg = Release|Win32
 		{ABE361DC-3879-4670-9765-231E089D3AB5}.RelWithDebInfo|x86.Build.0 = Release|Win32
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.Debug|x64.ActiveCfg = Debug|x64
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.Debug|x64.Build.0 = Debug|x64
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.Debug|x86.ActiveCfg = Debug|x64
+		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.Debug|x86.Build.0 = Debug|x64
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.MinSizeRel|x86.ActiveCfg = MinSizeRel|x64
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.Release|x64.ActiveCfg = Release|x64
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.Release|x64.Build.0 = Release|x64
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.Release|x86.ActiveCfg = Release|x64
-		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|x64
-		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.RelWithDebInfo|x64.Build.0 = RelWithDebInfo|x64
+		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.RelWithDebInfo|x64.ActiveCfg = Release|x64
+		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.RelWithDebInfo|x64.Build.0 = Release|x64
 		{3BDDD230-E51D-3283-9E3F-C16CC63B8031}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
