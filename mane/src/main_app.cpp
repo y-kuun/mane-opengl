@@ -3,9 +3,8 @@
 #include <windows.h>
 #include <synchapi.h>
 #include <glad/glad.h>
-
-#if 1
-
+#include <GLFW/glfw3.h>
+#include <iostream>
 
 LRESULT CALLBACK WindowProc(
     _In_ HWND   hwnd,
@@ -17,6 +16,12 @@ LRESULT CALLBACK WindowProc(
 	LRESULT result = DefWindowProc(hwnd, uMsg, wParam, lParam);
     return result;
 }
+
+void draw();
+void init();
+
+#if 0
+#pragma comment( linker, "/subsystem:windows" )
 
 int WINAPI WinMain(
     _In_ HINSTANCE hInstance,
@@ -65,6 +70,8 @@ int WINAPI WinMain(
 						}
 					}
 				}
+				draw();
+				Sleep(1000);
 			}
 		}
 		else
@@ -79,4 +86,29 @@ int WINAPI WinMain(
     return 0;
 }
 
+#else
+
+int main(int argc, char** argv) {
+	init();
+	while (true)
+	{
+		draw();
+		Sleep(1000);
+	}
+}
 #endif
+
+void draw()
+{
+	std::cout << "Frame updated!!!" << std::endl;
+}
+
+void init()
+{
+	// init
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+}
