@@ -338,3 +338,12 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# flycheck
+flycheck*.plist
+
+# tags
+tags
+GPATH
+GRTAGS
+GTAGS

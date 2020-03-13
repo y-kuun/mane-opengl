@@ -1,10 +1,12 @@
-// -*- coding: gb18030 -*-
+// -*- coding: utf-8 -*-
+
+#include "mane.h"
+#include "main_app.h"
 
 #include <windows.h>
 #include <synchapi.h>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <iostream>
+
 
 LRESULT CALLBACK WindowProc(
     _In_ HWND   hwnd,
@@ -18,11 +20,10 @@ LRESULT CALLBACK WindowProc(
 }
 
 void draw();
-void init();
+MANE_RESULT init();
 
 #if 0
-#pragma comment( linker, "/subsystem:windows" )
-
+// #pragma comment( linker, "/subsystem:windows" )
 int WINAPI WinMain(
     _In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
@@ -30,17 +31,19 @@ int WINAPI WinMain(
     _In_ int nShowCmd
 )
 {
+
     WNDCLASSW WindowClass = {0};
     WindowClass.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW;
     WindowClass.lpfnWndProc = WindowProc;
     WindowClass.hInstance = hInstance;
     // WindowClass.hIcon = ;
     WindowClass.lpszClassName = TEXT("Mane OpenGL");
-	
+
+		
     if(RegisterClassW(&WindowClass))
     {
         HWND WindowHandle = CreateWindowExW(
-            0, WindowClass.lpszClassName, TEXT("ª∂”≠¿¥µΩ Mane OpenGL"), WS_OVERLAPPEDWINDOW | WS_VISIBLE,
+            0, WindowClass.lpszClassName, TEXT("Ê¨¢ËøéÊù•Âà∞ Mane OpenGL"), WS_OVERLAPPEDWINDOW | WS_VISIBLE,
             CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, 0, 0, hInstance, 0
 			);
 
@@ -85,16 +88,49 @@ int WINAPI WinMain(
 	}
     return 0;
 }
-
 #else
 
-int main(int argc, char** argv) {
+static int MANE_DEFAULT_WIDTH = 1920;
+static int MANE_DEFAULT_HEIGHT = 1080;
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+
+void processInput(GLFWwindow *window)
+{
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+}
+
+int main(int argc, char** argv)
+{
 	init();
-	while (true)
+	g_window_ = glfwCreateWindow(MANE_DEFAULT_WIDTH, MANE_DEFAULT_HEIGHT, "Ê¨¢ËøéÊù•Âà∞ Mane OpenGL !!!", NULL, NULL);
+	if (g_window_ == NULL)
 	{
-		draw();
-		Sleep(1000);
+		std::cout << "Failed to create GLFW window" << std::endl;
+		glfwTerminate();
+		return -1;
 	}
+	glfwMakeContextCurrent(g_window_);
+	glfwSetFramebufferSizeCallback(g_window_, framebuffer_size_callback);	
+	
+
+	while(!glfwWindowShouldClose(g_window_))
+	{
+		processInput(g_window_);
+
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		
+		glfwSwapBuffers(g_window_);
+		glfwPollEvents();
+		
+	}
+	glfwTerminate();
+	return 0;
 }
 #endif
 
@@ -103,12 +139,20 @@ void draw()
 	std::cout << "Frame updated!!!" << std::endl;
 }
 
-void init()
+MANE_RESULT init()
 {
+	glfw
 	// init
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		std::cout << "Failed to initialize GLAD" <<std::endl ;
+		return MANE_FAILED;
+	}
+	return MANE_OK;
 }
