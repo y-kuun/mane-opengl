@@ -1,13 +1,17 @@
 // -*- coding: utf-8 -*-
-
-#include "mane.h"
-#include "main_app.h"
+// msbuild.exe mane-opengl.sln -p:Configuration=Release -p:Platform=x64
 
 #include <windows.h>
 #include <synchapi.h>
 #include <iostream>
 
+#include "mane.h"
+#include "main_app.h"
 
+void draw();
+MANE_RESULT init();
+
+#if 0
 LRESULT CALLBACK WindowProc(
     _In_ HWND   hwnd,
     _In_ UINT   uMsg,
@@ -19,10 +23,6 @@ LRESULT CALLBACK WindowProc(
     return result;
 }
 
-void draw();
-MANE_RESULT init();
-
-#if 0
 // #pragma comment( linker, "/subsystem:windows" )
 int WINAPI WinMain(
     _In_ HINSTANCE hInstance,
@@ -90,9 +90,6 @@ int WINAPI WinMain(
 }
 #else
 
-static int MANE_DEFAULT_WIDTH = 1920;
-static int MANE_DEFAULT_HEIGHT = 1080;
-
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
@@ -107,25 +104,32 @@ void processInput(GLFWwindow *window)
 int main(int argc, char** argv)
 {
 	init();
-	g_window_ = glfwCreateWindow(MANE_DEFAULT_WIDTH, MANE_DEFAULT_HEIGHT, "欢迎来到 Mane OpenGL !!!", NULL, NULL);
-	if (g_window_ == NULL)
+	mane_global::g_window_ = glfwCreateWindow(mane_const::MANE_DEFAULT_WIDTH, mane_const::MANE_DEFAULT_HEIGHT,
+											  "欢迎来到 Mane OpenGL !!!", NULL, NULL);
+	if (mane_global::g_window_ == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
 		return -1;
 	}
-	glfwMakeContextCurrent(g_window_);
-	glfwSetFramebufferSizeCallback(g_window_, framebuffer_size_callback);	
-	
+	glfwMakeContextCurrent(mane_global::g_window_);
+	glfwSetFramebufferSizeCallback(mane_global::g_window_, framebuffer_size_callback);	
 
-	while(!glfwWindowShouldClose(g_window_))
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		processInput(g_window_);
+		std::cout << "Failed to initialize GLAD" <<std::endl ;
+		return MANE_FAILED;
+	}
+	std::cout << "Main Loop Entry!!!" << std::endl;
+	
+	while(!glfwWindowShouldClose(mane_global::g_window_))
+	{
+		processInput(mane_global::g_window_);
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		
-		glfwSwapBuffers(g_window_);
+		glfwSwapBuffers(mane_global::g_window_);
 		glfwPollEvents();
 		
 	}
@@ -141,7 +145,6 @@ void draw()
 
 MANE_RESULT init()
 {
-	glfw
 	// init
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -149,10 +152,5 @@ MANE_RESULT init()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "Failed to initialize GLAD" <<std::endl ;
-		return MANE_FAILED;
-	}
 	return MANE_OK;
 }

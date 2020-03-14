@@ -1,6 +1,5 @@
 #pragma once
 
-
 typedef int MANE_RESULT;
 
 enum : MANE_RESULT {
